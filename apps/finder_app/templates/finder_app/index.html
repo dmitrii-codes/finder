@@ -31,7 +31,7 @@
 					{% endfor %}
 				</ul>
 				{% endif %}
-			<form action="/process" method="post" enctype="multipart/form-data">
+			<form action="/finder/process" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
 				<h2>Register</h2>	
 				<input type="hidden" id="Lat2" name="lat">
@@ -53,7 +53,7 @@
 
 		<div id="login-wrapper" style="float: right;">
 				<img class="finder_img" src="{% static 'finder_app/img/finder.png' %}" alt="logo">
-			<form action="/login" method="post">
+			<form action="/finder/login" method="post">
 				{% csrf_token %}
 				<h2>Login</h2>
 				<input type="hidden" id="Lat1" name="lat">

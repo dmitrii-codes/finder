@@ -66,7 +66,7 @@ def dash(request):
 					rating += eachReview.rating
 				rating = rating/len(reviews)
 			ratings.append(round(rating, 1))
-			rating_links.append('view_review/{}'.format(each.created_by.id))
+			rating_links.append('finder/view_review/{}'.format(each.created_by.id))
 			names.append('{} {}'.format(each.created_by.first_name, each.created_by.last_name))
 			usernames.append(each.created_by.username)
 			categories.append(each.category.name)
@@ -77,15 +77,15 @@ def dash(request):
 			joineds.append(len(each.joined_users.all()))
 			max_users.append(each.max_users)
 			if User.objects.get(id=request.session['user_id']) in each.joined_users.all():
-				join_links.append('leave_activity/{}'.format(each.id))
+				join_links.append('finder/leave_activity/{}'.format(each.id))
 				join_messages.append('You have already joined. Leave?')
 			elif request.session['user_id'] == each.created_by.id:
-				join_links.append('delete_activity/{}'.format(each.id))
+				join_links.append('finder/delete_activity/{}'.format(each.id))
 				join_messages.append('You have created this event. Delete?')
 			else:
-				join_links.append('join_activity/{}'.format(each.id))
+				join_links.append('finder/join_activity/{}'.format(each.id))
 				join_messages.append('Would you like to join?')
-			message_links.append('write_message/{}'.format(each.created_by.id))
+			message_links.append('finder/write_message/{}'.format(each.created_by.id))
 		
 		if "view_review_id" in request.session:
 			context = {
@@ -174,8 +174,8 @@ def process(request):
 	else: 
 		for error in result['errors']:
 			messages.error(request, error)
-		return redirect('/')
-	return redirect('/main')
+		return redirect('/finder')
+	return redirect('/finder/main')
 
 def login(request):
 	result = User.objects.loginValidation(request.POST)
@@ -184,13 +184,13 @@ def login(request):
 	if result['status'] == False:
 		for error in result['errors']:
 			messages.warning(request, error)
-		return redirect('/')
+		return redirect('/finder')
 	request.session['user_id'] = result['user'].id
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def logout(request):
 	request.session.clear()
-	return redirect('/')
+	return redirect('/finder')
 
 def display_user(request):
 	users = User.objects.get(id=1)
@@ -203,32 +203,32 @@ def addActivity(request):
 		request.session['searchID'] = response['activity'].category.id
 		request.session['lat'] = response['activity'].lat
 		request.session['lng'] = response['activity'].lng
-		return redirect('/main')
+		return redirect('/finder/main')
 	else:
 		for error in response['errors']:
 			messages.error(request, error)
-		return redirect('/main')
+		return redirect('/finder/main')
 
 def searchActivity(request):
 	request.session['searchID'] = request.POST['categoryId']
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def clearSearch(request):
 	del request.session['searchID']
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def joinActivity(request, number):
 	User.objects.get(id=request.session['user_id']).joined_activities.add(Activity.objects.get(id=number))
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def leaveActivity(request, number):
 	Activity.objects.get(id=number).joined_users.remove(User.objects.get(id=request.session['user_id']))
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def deleteActivity(request, number):
 	if request.session['user_id'] == Activity.objects.get(id=number).created_by.id:
 		Activity.objects.get(id=number).delete()
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def leaveReview(request, number):
 	if request.method == "POST":
@@ -236,27 +236,27 @@ def leaveReview(request, number):
 		newReview = Review.objects.create(rating=int(request.POST['rating']),comment=request.POST['comment'],written_by=User.objects.get(id=request.session['user_id']))
 		newReview.written_for.add(User.objects.get(id=number))
 		newReview.save()
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def viewReview(request, number):
 	request.session['view_review_id'] = number
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def exitReview(request):
 	del request.session['view_review_id']
-	return redirect('/main')
+	return redirect('/finder/main')
 #--------------------------------------------------------------------------------------
 def messagesid(request, number):
 	request.session['writeTo'] = number
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def closeMessages(request):
 	del request.session['writeTo']
-	return redirect('/main')
+	return redirect('/finder/main')
 
 def processMessage(request):
 	activeuser = User.objects.get(id=request.session['user_id'])
 	otheruser = User.objects.get(id=request.session['writeTo'])
 	Message.objects.create(message=request.POST['message'], written_by=activeuser, written_for=otheruser, created_at=datetime.datetime.now(), updated_at=datetime.datetime.now())
-	return redirect('/main')
+	return redirect('/finder/main')
 #----------------------------------------------------------------------------------------

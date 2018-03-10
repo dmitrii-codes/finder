@@ -29,7 +29,7 @@
         <p>Joined {{ user.joined_activities.all.count }} activities:</p>
         {% for each in user.joined_activities.all %}
         <p>You've joined a(n) {{each.category.name}} activity</p>
-        <a href="leave_activity/{{each.id}}">Leave</a>
+        <a href="finder/leave_activity/{{each.id}}">Leave</a>
         {% endfor %}
         {% endif %}
 
@@ -41,13 +41,13 @@
         <p>{{each.first_name}}&nbsp;{{each.last_name}}</p>
         {% endfor %}
         {% endif %}
-        <a href="delete_activity/{{user.created_activity.id}}">End activity</a>
+        <a href="finder/delete_activity/{{user.created_activity.id}}">End activity</a>
         {% endif %}
         <!--  from here -->
         <h3><a id="mymessages" href="#">Messages</a></h3> <!-- Quan please remove styling from html and add it into css thanks apreciate you!-->
         <!--to here-->
         <br>
-        <a href="/logout">Logout</a>
+        <a href="/finder/logout">Logout</a>
     </div>
     <!-- Quan please remove styling from html and add it into css thanks apreciate you!-->
     <div id="displaymymsg" class="card text-white activity" style="max-width: 18rem;">
@@ -58,12 +58,12 @@
             <div>
             {% for i in groupedmsg %}
             <p>
-                <a href="/write_message/{{ i.written_by.id }}">{{ i.written_by.first_name }}&nbsp;{{ i.written_by.last_name }}</a>
+                <a href="/finder/write_message/{{ i.written_by.id }}">{{ i.written_by.first_name }}&nbsp;{{ i.written_by.last_name }}</a>
             </p>
             {% endfor %}
             {% for x in groupedmsg2 %}
             <p>
-                <a href="/write_message/{{ x.written_for_id }}">{{ x.written_for.first_name }}&nbsp;{{ x.written_for.last_name }}</a>
+                <a href="/finder/write_message/{{ x.written_for_id }}">{{ x.written_for.first_name }}&nbsp;{{ x.written_for.last_name }}</a>
             </p>
             {% endfor %}
             </div>
@@ -71,7 +71,7 @@
     </div>
     {% if msgcheck == True %}
     <div class="messages">
-        <form action="/closeMessages">
+        <form action="/finder/closeMessages">
         <input type="submit" value="close">
         </form>
         <div class="displaymsg">
@@ -85,7 +85,7 @@
             </div>
             {% endfor %}
         </div>
-        <form class="submitmsg" action="/processMessage" method="post" style="text-align: center; margin-top: 10px; margin-bottom: 5px;">
+        <form class="submitmsg" action="/finder/processMessage" method="post" style="text-align: center; margin-top: 10px; margin-bottom: 5px;">
             {% csrf_token %}
             <textarea class="textarea" name="message" style="width: 250px; min-height: 50px; display: inline-block; vertical-align: middle;"></textarea>
             <input style="display: inline-block;" type="submit" name="send" value="Send">
@@ -95,7 +95,7 @@
     <!-- to here -->
     <button id="startSearchDiv" type="button" class="activity btn btn-info-lg"><strong><h3>Find events around you</h3></strong></button>
 	<div class='activity' id="searchDiv">
-		<form action="/activity/search" method="post" id="searchForm">
+		<form action="/finder/activity/search" method="post" id="searchForm">
 			{% csrf_token %}
 			Activity you are interested in:
 			<select name="categoryId">
@@ -109,7 +109,7 @@
     <button id="restart" type="button" class="activity btn btn-info-lg"><strong>Search</strong></button>
     <button id='beginCreationDiv' type="button" class="activity btn btn-info-l"><strong>Create an activity</strong></button>
 	<div class='activity' id='actFormDiv'>
-	<form action="/activity/register" method="post" id="activityForm">
+	<form action="/finder/activity/register" method="post" id="activityForm">
 		{% csrf_token %}
 		<table>
 			<tr>
@@ -160,7 +160,7 @@
             <p>Rating: {{review.rating}}</p>
             <p>Comment: {{ review.comment }}</p>
         {% endfor %}
-        <form action="leave_review/{{ request.session.view_review_id }}" method="post">
+        <form action="finder/leave_review/{{ request.session.view_review_id }}" method="post">
             {% csrf_token %} 
             <input type="hidden" name="reviewingUser" value="{{ request.session.user_id }}"> 
             <select name="rating">
@@ -173,7 +173,7 @@
             <input type="text" name="comment"> 
             <input type="submit" value="Submit Review"> 
         </form> 
-        <form action=/close_review method="POST">
+        <form action=/finder/close_review method="POST">
             {% csrf_token %}
             <input type="submit" value="Exit reviews"> 
         </form>
@@ -276,7 +276,7 @@
 			$('#restart').click(function(){
 				$('#restart').fadeToggle();
 				$('#searchDiv').fadeToggle();
-				$('#map').load('/clearSearch')
+				$('#map').load('/finder/clearSearch')
 			});
 		})
         </script>
