@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Web/Software Developer based in Seattle area.">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'landing_page/css/style.css' %}">
+    <style>
+    #wrapper{
+        background-image: url("{% static 'landing_page/img/outer-space.jpg' %}");
+    }
+    </style>
+    <title>Dmitrii Vasilev</title>
+</head>
+<body>
+    <div id='wrapper'>
+        <img id="headshot" src="{% static 'landing_page/img/head_img.png' %}">
+        <h1>&lt; Dmitrii Vasilev /&gt;</h1>
+        <h2>Web developer</h2>
+        <ul><h3>Current projects:</h3>
+        <li><a href="/finder">Finder</a></li>
+        </ul>
+    </div>
+</body>
+</html>

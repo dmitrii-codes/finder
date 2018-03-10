@@ -1,0 +1,168 @@
+#map {
+    height: 100%;
+}
+html, body{
+    padding: 0;
+    margin: 0;   
+    height: 100%;
+}
+.activity{
+	background-color: #505050;
+	color: #f5ebf4;
+	padding: 10px;
+	position: fixed;
+}
+#userPhotoDiv{
+	display: inline-block;
+	left: .4%;
+	top: 5%;
+	border-radius: 3px;
+	text-align: center;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#userProfileDiv{
+	display: none;
+	left: .6%;
+	top: 5%;
+	text-align: center;
+	border-radius: 3px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#reviewsDiv{
+    overflow-x: hidden;
+    display: inline-block;
+    left: 77%;
+	top: 1%;
+	opacity: 0.9;
+	max-height: 60%;
+	border-radius: 3px;
+	filter: alpha(opacity=50);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#beginCreationDiv{
+	position: absolute;
+	display: inline-block;
+	width: 20%;
+	height: 5%;
+	left: 77%;
+	top: 93%;
+	opacity: 0.8;
+	filter: alpha(opacity=50);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#actFormDiv{
+	display: none;
+	left: 77%;
+	top: 65%;
+	width: 20%;
+	opacity: 0.8;
+	filter: alpha(opacity=50);
+	border-radius: 3px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#startSearchDiv{
+	display: inline-block;
+	left: 41%;
+	top: 40%;
+	width: 350px;
+	height: 200px;
+	opacity: 0.8;
+	filter: alpha(opacity=50);
+	border-radius: 5%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#searchDiv{
+	display: none;
+	left: 40%;
+	top: 45%;
+	border-radius: 3px;
+	opacity: 0.8;
+	filter: alpha(opacity=50);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#restart{
+	display: none;
+	width: 15%;
+	height: 5%;
+	left: 2%;
+	top: 93%;
+	opacity: 0.8;
+	filter: alpha(opacity=50);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.image10{
+	width: 5%;
+}
+.image100{
+	width: 10%;
+}
+.image{
+	width: 100%;
+	height: 100%;
+}
+.logoutWhite{
+	color: white;
+}
+.logoutbutton{
+	background-color: #9b6499;
+}
+.search-btn{
+	margin-top: 10px;
+	background-color: #9b6499;
+	color: white;
+}
+.textarea{
+	width: 178px;	
+}
+.cate{
+	width: 178px;
+}
+.rating_link{
+	font-size: 15px;
+}
+#displaymymsg{
+	display: none; 
+	overflow-x: hidden;
+	background-color: #505050;
+	color: #f5ebf4;
+	position: absolute;
+	border-radius: 3px;
+	left: 82%;
+	top: 1%;
+	opacity: 0.9;
+	text-align: center;
+	width: 20%;
+	min-height: 10%;
+	max-height: 60%;
+	filter: alpha(opacity=50);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.msg-post{
+	display: inline-block;
+	vertical-align: top;
+	background-color: #dddddd;
+	min-height: 50px;
+	margin-top: 10px;
+	width: 150px;
+	border-radius: 5px;
+	margin-left: 15px;
+
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+.messages{
+	position: fixed;
+	left: 40%; 
+	top: 25%;
+	background-color: rgb(121, 121, 121);
+	opacity: 0.9;
+	filter: alpha(opacity=50);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.messageBox{
+	width: 325px; 
+	height: 300px; 
+	overflow-y: scroll;
+}
+.rating-color{
+	color: #3bc6bc;
+}
