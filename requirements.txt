@@ -2,7 +2,7 @@ bcrypt==3.1.4
 boto3==1.6.6
 botocore==1.9.6
 cffi==1.11.4
-Django==1.11
+Django==2.2.24
 django-appconf==1.0.2
 django-imagekit==4.0.2
 django-storages==1.6.5
